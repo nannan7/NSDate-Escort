@@ -113,6 +113,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDate *)dateBySubtractingSeconds:(NSInteger) dSeconds;
 
+- (NSDate *)dateAtStartOfHour;
+
 - (NSDate *)dateAtStartOfDay;
 
 - (NSDate *)dateAtStartOfNextDay;
