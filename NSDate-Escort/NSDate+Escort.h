@@ -117,6 +117,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDate *)dateAtStartOfDay;
 
+- (NSDate *)dateAtEndOfDay;
+
 - (NSDate *)dateAtStartOfNextDay;
 
 - (NSDate *)dateAtStartOfWeek;
@@ -124,6 +126,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSDate *)dateAtStartOfNextWeek;
 
 - (NSDate *)dateAtStartOfMonth;
+
+- (NSDate *)dateAtEndOfMonth;
 
 - (NSDate *)dateAtStartOfNextMonth;
 

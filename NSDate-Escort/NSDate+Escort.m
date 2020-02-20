@@ -278,6 +278,16 @@ static dispatch_once_t AZ_DefaultCalendarIdentifierLock_onceToken;
     return [calendar dateFromComponents:components];
 }
 
+- (NSDate *)dateAtEndOfDay {
+    NSCalendar *calendar = [NSDate AZ_currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
+    components.timeZone = calendar.timeZone;
+    return [calendar dateFromComponents:components];
+}
+
 - (NSDate *)dateAtStartOfHour {
     NSCalendar *calendar = [NSDate AZ_currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
@@ -317,6 +327,14 @@ static dispatch_once_t AZ_DefaultCalendarIdentifierLock_onceToken;
     NSDateComponents *components = [calendar components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
     NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self];
     components.day = range.location;
+    return [calendar dateFromComponents:components];
+}
+
+- (NSDate *)dateAtEndOfMonth {
+    NSCalendar *calendar = [NSDate AZ_currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
+    NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self];
+    components.day = range.length;
     return [calendar dateFromComponents:components];
 }
 
